@@ -137,3 +137,6 @@ https://www.heroku.com/pricing
 11) Clean up
 
         heroku apps:destroy ${HEROKU_APP_NAME}
+        rm -rf ~/projects/heroku-jhipster-demo
+
+
