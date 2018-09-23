@@ -8,17 +8,22 @@ so it's worth while to consider a migration plan once your app gains traction.
 # Prerequisites
 
 - Heroku free account - https://signup.heroku.com/
+- java 1.8+ (only needed for this demo, not a heroku requirement)
+
 
 # Pricing
 
 https://www.heroku.com/pricing
 
+
 # Pros
 
 - Very quick to set up
-- `git push` to deploy
+- once setup `git push` to deploy
 - 2 dynos on free plan is enough for an app and a database
 - lots of addons available such as redis, postgress, rabbitmq and many many more.
+- heroku cli has alot of features
+- Excellent option for projects or teams that don't have a devops or CI/CD team.
 
 # Cons
 
@@ -51,7 +56,7 @@ https://www.heroku.com/pricing
 
         brew install jhipster
 
-4) Create a spring boot project with jhipster
+5) Create a spring boot project with jhipster
 
         mkdir -p ~/projects/heroku-jhipster-demo
         cd ~/projects/heroku-jhipster-demo
@@ -79,7 +84,7 @@ https://www.heroku.com/pricing
         # verify jhipster created the project
         ls
 
-5) Test new app. make sure it runs
+6) Test new app. make sure it runs
 
         cd ~/projects/heroku-jhipster-demo
         ./gradlew build
@@ -91,12 +96,12 @@ https://www.heroku.com/pricing
 
         # if everything looks good, stop the boot server with ctrl-C
 
-6) Create a heroku Procfile
+7) Create a heroku Procfile
 
         # tell heroku how to start our app
         echo 'web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/*.war' > Procfile
 
-6) add project to git and create a heroku remote 
+8) add project to git and create a heroku remote 
 
         git init
 
@@ -109,13 +114,13 @@ https://www.heroku.com/pricing
         # add a remote to your git repo
         heroku git:remote -a ${HEROKU_APP_NAME}
 
-7) Commit and push repo to heroku
+9) Commit and push repo to heroku
 
         git add .
         git commit -am "initial commit, jhipster + heroku demo"
         git push heroku master
 
-8) Visit Heroku site
+10) Visit Heroku site
 
         # NOTE: you might have to wait a minute for spring boot to start up.
 
@@ -126,15 +131,15 @@ https://www.heroku.com/pricing
         open "https://${HEROKU_APP_NAME}.herokuapp.com/jhipster/"
         curl -v "https://${HEROKU_APP_NAME}.herokuapp.com/jhipster/v2/api-docs" | jq
 
-9) View app logs
+11) View app logs
 
         heroku logs --tail
 
-10) Heroku java docs
+12) Heroku java docs
 
         open 'https://devcenter.heroku.com/articles/getting-started-with-java'
 
-11) Clean up
+13) Clean up
 
         heroku apps:destroy ${HEROKU_APP_NAME}
         rm -rf ~/projects/heroku-jhipster-demo
